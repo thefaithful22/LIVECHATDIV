@@ -1,328 +1,115 @@
 <div id="unique-container">
-  <!DOCTYPE html>
-<html>
-<head>
-    <style>
-        /* CSS content from styles (1).css */
-        /* Decoded from base64 */
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
-
-/* Variables */
-:root {
-    --primary-color: #3C3C3C;
-    --secondary-color: #3C3C3C;
-    --background-color: transparent;
-    --header-color: #222831;
-    --border-color: #e2e2e2;
-    --user-msg-color: white;
-    --berri-msg-color: #333;
-    --scrollbar-color: #ccc;
-}
-
-body {
-    font-family: 'Roboto', Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: var(--background-color);
-}
-
-.site-content {
-    position: relative;
-    z-index: 1;
-}
-
-.chat-widget {
-    display: none;
-    width: 300px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    /* position: fixed; */ /* Commented out */
-    /* bottom: 30px; */ /* Commented out */
-    /* right: 30px; */ /* Commented out */
-    z-index: 9999;
-}
-
-.chat-header {
-    padding: 10px;
-    background-color: var(--header-color);
-    border-bottom: 1px solid #393E46;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #FFFFFF;
-    font-weight: 500;
-}
-
-.chat-messages {
-    height: 320px; /* Updated value */
-    overflow-y: auto;
-    padding: 15px;
-    scroll-behavior: smooth;
-}
-
-.message {
-    margin-bottom: 10px;
-    line-height: 1.5;
-    max-width: 80%;
-    padding: 8px 14px;
-    border-radius: 18px;
-    opacity: 0;
-    animation: fadeIn 0.5s forwards;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
+  <style>
+    #unique-container {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    to {
-        opacity: 1;
+
+    #unique-container #chat-container {
+      height: 500px;
+      width: 400px;
+      border: 1px solid #000;
+      padding: 10px;
+      overflow-y: auto;
     }
-}
 
-.message.user {
-    align-self: flex-end;
-    background-color: var(--primary-color);
-    color: var(--user-msg-color);
-    margin-left: 20%;
-}
-
-.message.berri {
-    align-self: flex-start;
-    background-color: #EEEEEE;
-    color: var(--berri-msg-color);
-    margin-right: 20%;
-}
-
-#chat-form {
-    display: flex;
-    padding: 5px;
-    border-top: 1px solid var(--border-color);
-}
-
-#user-input {
-    flex-grow: 1;
-    padding: 8px;
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
-    outline: none;
-}
-
-button {
-    padding: 8px 12px;
-    background-image: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--user-msg-color);
-    font-size: 14px;
-    border: none;
-    border-radius: 20px;
-   Here's the second part of the CSS content:
-
-```css
-    cursor: pointer;
-    margin-left: 5px;
-    outline: none;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-image: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-}
-
-/* ... other styles ... */
-
-.chat-widget-toggle {
-    display: block;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 0 10px;
-    height: 50px;
-    background-image: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--user-msg-color);
-    text-align: center;
-    line-height: 50px;
-    font-size: 14px;
-    font-weight: 500;
-    border-radius: 25px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    white-space: nowrap;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9998;
-}
-
-.chat-widget-toggle::before {
-    content: '💬 Chat with Sylvie';
-    font-size: 14px;
-    position: relative;
-    top: -2px;
-    margin-right: 5px;
-}
-
-/* ... other styles ... */
-
-.chat-widget-toggle:hover {
-    background-image: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-    transform: translateY(-3px);
-}
-
-.chat-messages::-webkit-scrollbar {
-    width: 8px;
-}
-
-.chat-messages::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 5px;
-}
-
-.chat-messages::-webkit-scrollbar-thumb {
-    background: var(--scrollbar-color);
-    border-radius: 5px;
-}
-
-.chat-messages::-webkit-scrollbar-thumb:hover {
-    background: #b3b3b3;
-}
-
-.chatbot-avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 8px;
-    object-fit: cover;
-}
-
-.message.berri .avatar-container {
-    display: flex;
-    align-items: flex-start;
-}
-
-.hidden {
-    display: none;
-}
-
-.typing-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #333;
-    margin-right: 2px;
-    animation: typing 1.2s infinite;
-}
-
-.typing-dot:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.typing-dot:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-@keyframes typing {
-    0% {
-        transform: translateY(0);
+    #unique-container #chat-container::-webkit-scrollbar {
+      width: 5px;
     }
-    50% {
-        transform: translateY(-4px);
+
+    #unique-container #chat-container::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 2px;
     }
-    100% {
-        transform: translateY(0);
+
+    #unique-container #chat-container::-webkit-scrollbar-thumb:hover {
+      background: #555;
     }
-}
 
-/* New classes */
-.chat-title {
-    font-size: 16px;
-    font-weight: 500;
-    margin-right: 5px;
-}
+    #unique-container .chat-message {
+      opacity: 0;
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      transform: translateY(20px);
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #eee;
+      max-width: 70%;
+      align-self: flex-start;
+      color: #000;
+    }
 
-.close-chat {
-    font-size: 18px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
+    #unique-container .chat-message.Customer {
+      align-self: flex-end;
+      background-color: #a8d8ea;
+      color: #000;
+    }
 
-.close-chat:hover {
-    transform: rotate(180deg);
-}
+    #unique-container .chat-message.Sylvi-AI {
+      background-color: #aa96da;
+      color: #fff;
+    }
 
-/* Add the new rule at the end of your CSS code */
-.chat-widget,
-.chat-widgetHere's the third part of the CSS content:
+    #unique-container .timestamp {
+      font-size: 0.7em;
+      text-align: right;
+      color: #666;
+    }
 
-```css
--toggle {
-    transform: scale(0);
-    transition: transform 0.3s;
-}
+    #unique-container .chat-container {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
 
-.chat-widget.active,
-.chat-widget-toggle.active {
-    transform: scale(1);
-}
+  <div id="chat-container" class="chat-container">
+    <div class="chat-message Customer" id="message-1"><span class="timestamp"></span></div>
+    <div class="chat-message Sylvi-AI" id="message-2"><span class="timestamp"></span></div>
+    <div class="chat-message Customer" id="message-3"><span class="timestamp"></span></div>
+    <div class="chat-message Sylvi-AI" id="message-4"><span class="timestamp"></span></div>
+  </div>
 
-#unique-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    </style>
-</head>
-<body>
-    <div class="chat-widget">
-        <div class="chat-header">
-            <span class="chat-title">Chat with Sylvie</span>
-            <span class="close-chat">X</span>
-        </div>
-        <div class="chat-messages">
-            <div class="message berri">
-                <div class="avatar-container">
-                    <img class="chatbot-avatar" src="avatar.png" alt="Avatar">
-                </div>
-                <p>Hello! How can I assist you today?</p>
-            </div>
-            <div class="message user">
-                <p>Hi! I need help with my order.</p>
-            </div>
-            <div class="message berri">
-                <div class="avatar-container">
-                    <img class="chatbot-avatar" src="avatar.png" alt="Avatar">
-                </div>
-                <p>Of course! Could you please provide your order number?</p>
-            </div>
-            <div class="message user">
-                <p>Yes, it's 123456.</p>
-            </div>
-            <div class="message berri">
-                <div class="avatar-container">
-                    <img class="chatbot-avatar" src="avatar.png" alt="Avatar">
-                </div>
-                <p>Thank you! I'm checking your order status now.</p>
-            </div>
-        </div>
-        <form id="chat-form">
-            <input id="user-input" type="text" placeholder="Type your message...">
-            <button type="submit">Send</button>
-        </form>
-    </div>
-    <div class="chat-widget-toggle">
-        <span>Chat with Sylvie</span>
-    </div>
-</body>
-</html>
+  <script>
+    const messages = [
+      {
+        role: 'Customer',
+        text: "Hey there, I'm looking for a dress for a summer wedding. Any recommendations?",
+      },
+      {
+        role: 'Sylvi AI',
+        text: "Hi! Absolutely, I'd love to help you find the perfect dress. How about something light and breezy? We have a lovely floral maxi dress that's been popular for summer weddings. Would you like to see it?",
+      },
+      {
+        role: 'Customer',
+        text: "That sounds perfect! Can I see it?",
+      },
+      {
+        role: 'Sylvi AI',
+        text: "Absolutely! Here's the link to the floral maxi dress on our website: <a href='http://www.boutique.com/floral-maxi-dress' target='_blank'>www.boutique.com/floral-maxi-dress</a>. Take a look and let me know if you have any questions!",
+      },
+    ];
+    
+    let counter = 1;
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        const chatMessage = document.getElementById(`message-${counter}`);
+    const timestamp = new Date();
+    chatMessage.innerHTML = `<strong>${message.role}</strong>: ${message.text}<span class="timestamp">${timestamp.toLocaleTimeString()}</span>`;
+    chatMessage.style.opacity = '1';
+    chatMessage.style.transform = 'translateY(0)';
+    counter += 1;
+    chatMessage.scrollIntoView({behavior: 'smooth'});
+  }, 2000 * index);
+});
+  </script>
 </div>
+
+
+
 
 
