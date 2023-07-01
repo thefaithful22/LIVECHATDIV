@@ -108,15 +108,12 @@ messages.forEach((message, index) => {
     chatMessage.innerHTML = `<strong>${message.role}</strong>: ${message.text}<span class="timestamp">${timestamp.toLocaleTimeString()}</span>`;
     chatMessage.classList.add('show');
     counter += 1;
-    chatMessage.scrollIntoView({behavior: 'smooth'});
   }, 2000 * index);
 });
 
+
   </script>
 </div>
-
-
-
 
 
 
