@@ -10,6 +10,8 @@
 }
 
 #chat-container {
+  display: flex;
+  flex-direction: column;
   height: 500px;
   width: 400px;
   border: 1px solid #ddd;
@@ -44,6 +46,7 @@
 }
 
 .chat-message.Sylvi-AI {
+  align-self: flex-start;
   background-color: #28a745;
   color: #fff;
 }
@@ -129,8 +132,3 @@ messages.forEach((message, index) => {
 
   </script>
 </div>
-
-
-
-
-
