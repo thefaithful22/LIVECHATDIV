@@ -115,7 +115,7 @@
 
     .chat-icon {
       position: absolute;
-      bottom: -30px;
+      bottom: -50px;
       left: 0;
     }
 
@@ -123,7 +123,41 @@
       width: 20px;
       height: 20px;
     }
+    
+    .chat-message:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+    }
+
+    .chat-message.Customer:before {
+      right: -10px;
+      border-left-color: #5D6D7E;
+      border-width: 10px 10px 10px 0;
+      top: 10px;
+    }
+
+    .chat-message.Sylvi-AI:before {
+      left: -10px;
+      border-right-color: #F2D7D5;
+      border-width: 10px 0 10px 10px;
+      top: 10px;
+    }
+
+    .chat-icon {
+      position: absolute;
+      bottom: -50px;
+      left: 0;
+    }
+
+    .chat-icon img {
+      width: 40px;
+      height: 40px;
+    }
   </style>
+  
 
   <div id="chat-container" class="chat-container">
     <div id="chat-header">
@@ -144,7 +178,7 @@
       },
       {
         role: 'Sylvi-AI',
-        text: "Hi! Absolutely, I'd love to help you find the perfect dress. How about something light and breezy? We have a lovely floral maxi dress that's been popular for summer weddings. Would you like to see it?",
+        text: "How about something light and breezy? We have a lovely floral maxi dress that's been popular for summer weddings. Would you like to see it?",
       },
       {
         role: 'Customer',
@@ -152,29 +186,26 @@
       },
       {
         role: 'Sylvi-AI',
-        text: "Absolutely! Here's the link to the floral maxi dress on our website: <a href='http://www.boutique.com/floral-maxi-dress' target='_blank'>www.boutique.com/floral-maxi-dress</a>. Take a look and let me know if you have any questions!",
+        text: "Absolutely! Here's our floral maxi dress on our website: <a href='http://www.boutique.com/floral-maxi-dress' target='_blank'>www.boutique.com/floral-maxi-dress</a>. Take a look and let me know if you have any questions!",
       },
     ];
 
     let counter = 1;
-messages.forEach((message, index) => {
-  setTimeout(() => {
-    const chatMessage = document.getElementById(`message-${counter}`);
-    const timestamp = new Date();
-    let label = message.role === 'Sylvi-AI' ? '' : `<strong>${message.role}</strong>: `;
-    let icon = message.role === 'Sylvi-AI' ? '<img src="https://i.imgur.com/7pQ6QJB.png" alt="Sylvi Icon">' : '';
-    let messageContent = `${label}${message.text}<span class="timestamp">${timestamp.toLocaleTimeString()}</span>`;
-    if (message.role === 'Sylvi-AI') {
-      chatMessage.querySelector('.chat-icon').innerHTML = icon;
-    }
-    chatMessage.insertAdjacentHTML('beforeend', messageContent);
-    chatMessage.classList.add('show');
-    counter += 1;
-  }, 2000 * index);
-});
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        const chatMessage = document.getElementById(`message-${counter}`);
+        const timestamp = new Date();
+        let label = '';
+        let icon = message.role === 'Sylvi-AI' ? '<img src="https://i.imgur.com/7pQ6QJB.png" alt="Sylvi Icon">' : '';
+        let messageContent = `${label}${message.text}<span class="timestamp">${timestamp.toLocaleTimeString()}</span>`;
+        if (message.role === 'Sylvi-AI') {
+          chatMessage.querySelector('.chat-icon').innerHTML = icon;
+        }
+        chatMessage.insertAdjacentHTML('beforeend', messageContent);
+        chatMessage.classList.add('show');
+        counter += 1;
+      }, 2000 * index);
+    });
   </script>
 </div>
-`
-
-
 `
