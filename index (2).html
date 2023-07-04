@@ -46,7 +46,7 @@
       display: flex;
       flex-direction: column;
       height: 500px;
-      width: 300px;
+      width: 400px;
       border: 1px solid #ddd;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
       padding: 10px;
@@ -73,12 +73,12 @@
 
     .chat-message.Customer {
       align-self: flex-end;
-      background-color: #5D6D7E; /* Dark gray color for the customer's messages */
+      background-color: #0b0c0d; /* Dark gray color for the customer's messages */
     }
 
     .chat-message.Sylvi-AI {
       align-self: flex-start;
-      background-color: #F2D7D5; /* Soft pink color for Sylvi's messages */
+      background-color: #AA336A; /* Soft pink color for Sylvi's messages */
     }
 
     .timestamp {
@@ -169,8 +169,9 @@
   </style>
   
 
-  <div id="chat-header">
-  <i class="fas fa-comments" style="margin-right: 10px;"></i> <!-- Changed the icon here -->
+  <div id="chat-container">
+    <div id="chat-header">
+  <i class="fas fa-spa" style="margin-right: 10px; color: #0b0c0d;"></i> <!-- Changed the icon and its color here -->
   <h1>Bina's Boutique</h1>
   <button>&times;</button>
 </div>
@@ -201,22 +202,20 @@
     ];
 
     let counter = 1;
-    messages.forEach((message, index) => {
-      setTimeout(() => {
-        const chatMessage = document.getElementById(`message-${counter}`);
-        const timestamp = new Date();
-        let label = '';
-        let icon = message.role === 'Sylvi-AI' ? '<img src="https://i.imgur.com/7pQ6QJB.png" alt="Sylvi Icon">' : '';
-        let messageContent = `${label}${message.text}<span class="timestamp">${timestamp.toLocaleTimeString()}</span>`;
-        if (message.role === 'Sylvi-AI') {
-          chatMessage.querySelector('.chat-icon').innerHTML = icon;
-        }
-        chatMessage.insertAdjacentHTML('beforeend', messageContent);
-        chatMessage.classList.add('show');
-        counter += 1;
-      }, 2000 * index);
-    });
-  </script>
+  messages.forEach((message, index) => {
+    setTimeout(() => {
+      const chatMessage = document.getElementById(`message-${counter}`);
+      let label = '';
+      let icon = message.role === 'Sylvi-AI' ? '<img src="https://i.imgur.com/7pQ6QJB.png" alt="Sylvi Icon">' : '';
+      let messageContent = `${label}${message.text}`; // Removed the timestamp here
+      if (message.role === 'Sylvi-AI') {
+        chatMessage.querySelector('.chat-icon').innerHTML = icon;
+      }
+      chatMessage.insertAdjacentHTML('beforeend', messageContent);
+      chatMessage.classList.add('show');
+      counter += 1;
+    }, 2000 * index);
+  });
+</script>
 </div>
 `
-
