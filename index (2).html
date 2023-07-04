@@ -10,28 +10,29 @@
     }
 
     #chat-header {
-      background-color: #F2D7D5; /* Soft pink color for the header */
-      color: #5D6D7E; /* Dark gray color for the text */
-      padding: 10px;
-      text-align: center;
-      border-radius: 10px 10px 0 0; /* Rounded corners at the top */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 1em;
-    }
+    background-color: #F2D7D5; /* Soft pink color for the header */
+    color: #5D6D7E; /* Dark gray color for the text */
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px 10px 0 0; /* Rounded corners at the top */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    width: 100%; /* Ensure the header spans the entire chat box */
+  }
 
-    #chat-header h1 {
-      margin: 0;
-    }
+  #chat-header h1 {
+    margin: 0;
+    font-size: 0.8em; /* Make the title smaller */
+  }
 
-    #chat-header button {
-      background: none;
-      border: none;
-      font-size: 1.2em;
-      cursor: pointer;
-    }
-
+  #chat-header button {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
     #chat-container {
       display: flex;
       flex-direction: column;
@@ -160,10 +161,11 @@
   
 
   <div id="chat-container" class="chat-container">
-    <div id="chat-header">
-      <h1>Fashion Chat</h1>
-      <button>&times;</button>
-    </div>
+  <div id="chat-header">
+    <i class="fas fa-rose" style="margin-right: 10px;"></i> <!-- Font Awesome rose icon -->
+    <h1>Bina's Boutique</h1> <!-- Change the title -->
+    <button>&times;</button>
+  </div>
     <div class="chat-message Customer" id="message-1"><span class="timestamp"></span></div>
     <div class="chat-message Sylvi-AI" id="message-2"><div class="chat-icon"></div><span class="timestamp"></span></div>
     <div class="chat-message Customer" id="message-3"><span class="timestamp"></span></div>
